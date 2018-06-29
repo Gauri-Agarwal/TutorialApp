@@ -1,8 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
+import EthrDID from "ethr-did";
 import axios from 'axios';
 
-console.clear();
+const ethrDid = new EthrDID({address: "0x788ac6c5d404d022e2676cedad7a328aba1c12b0", privateKey: "6380bcd311d1540fc5e0cb9ea367891eb0ed6b43688c28053d6d23f9d93ca752"})
+
+
+//await ethrDid.setAttribute('did/publicKey/Ed25519VerificationKey2018/publicKeyBase64', 'Arl8MN52fwhM4wgBaO4pMFO6M7I11xFqMmPSnxRQk2tx', 31104000)
+
 
 const Title = ({ todoCount }) => {
   return (
@@ -98,10 +102,10 @@ class TodoApp extends React.Component {
       <div>
         <Title todoCount={this.state.data.length} />
         <TodoForm addTodo={this.addTodo.bind(this)} />
-        <TodoList
-          todos={this.state.data}
-          remove={this.handleRemove.bind(this)}
-        />
+        
+          <TodoList
+            todos={this.state.data}
+            remove={this.handleRemove.bind(this)} />
       </div>
     );
   }
